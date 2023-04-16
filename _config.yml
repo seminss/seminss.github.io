@@ -10,50 +10,50 @@ baseurl: ""
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: en
+lang: en #ko-KR
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone:
+timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Chirpy # the main title
+title: Seminss # the main title
 
-tagline: A text-focused Jekyll theme # it will display as the sub-title
+tagline: Semin's DevLog # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://seminss.github.io"
 
 github:
-  username: github_username # change to your github username
+  username: seminss # change to your github username
 
-twitter:
-  username: twitter_username # change to your twitter username
+# twitter:
+#   username: twitter_username # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: your_full_name
-  email: example@domain.com # change to your email address
+  name: Semin Kim
+  email: 2007ksm@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
-    - https://github.com/username # change to your github homepage
+    # - https://twitter.com/username # change to your twitter homepage
+    - https://github.com/seminss # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: # fill in to your verification string
+google_site_verification: 000 # fill in to your verification string
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: # fill in your Google Analytics ID
+  id: '000' # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine
@@ -77,10 +77,10 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn:
+img_cdn: ''
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: /assets/img/img_profile.jpg
 
 # boolean type, the global switch for TOC in posts.
 toc: true
