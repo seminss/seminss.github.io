@@ -45,7 +45,7 @@ inventory.sort(comparing(Apple::getWeight));
 > - 인터페이스의 디폴트 메서드
 
 
-![img.png](morden_java/Unix commands related to the stream.png)
+[//]: # (![img.png]&#40;morden_java/Unix commands related to the stream.png&#41;)
 
 
 <br>
@@ -205,7 +205,7 @@ File[] hiddenFiles = new File(".").listFilles(File::isHidden);
 
 람다 문법 형식으로 구현된 프로그램을 함수형 프로그래밍, 즉 '함수를 일급값으로 넘겨주는 프로그램을 구현한다.'라고 한다.
 
-![img.png](morden_java/compare old and new.png)
+[//]: # (![img.png]&#40;morden_java/compare old and new.png&#41;)
 
 <br>
 
