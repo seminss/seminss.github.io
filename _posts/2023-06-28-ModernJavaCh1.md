@@ -44,7 +44,7 @@ inventory.sort(comparing(Apple::getWeight));
 > - 인터페이스의 디폴트 메서드
 
 
-![img.png](morden_java/Unix commands related to the stream.png)
+[//]: # (![img.png]&#40;morden_java/Unix commands related to the stream.png&#41;)
 
 
 <br>
@@ -97,7 +97,7 @@ cat faile1 file2 | tr "[A-Z]" "[a-z]" | sort | tail -3
 이러한 기능을 이론적으로 `동작 파라미터화`라고 부른다.
 스트림 API는 연산의 동작을 파라미터화할 수 있는 코드를 전달한다는 사상에 기초하기 때문이다.
 
-![img.png](morden_java/method as parameter of sort.png)
+[//]: # (![img.png]&#40;morden_java/method as parameter of sort.png&#41;)
 
 
 
@@ -206,7 +206,7 @@ File[] hiddenFiles = new File(".").listFilles(File::isHidden);
 
 람다 문법 형식으로 구현된 프로그램을 함수형 프로그래밍, 즉 '함수를 일급값으로 넘겨주는 프로그램을 구현한다.'라고 한다.
 
-![img.png](morden_java/compare old and new.png)
+[//]: # (![img.png]&#40;morden_java/compare old and new.png&#41;)
 
 ## 1.3.2 코드 넘겨주기 : 예제
 
