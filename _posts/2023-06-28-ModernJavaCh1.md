@@ -6,6 +6,7 @@ tags: [Java]
 render_with_liquid: false
 ---
 
+
 # 1.1 역사의 흐름은 무엇인가?
 
 > 자바 1.1(1997) → 자바 7(2011) → 자바 8(2014) → 자바 10(2018년 3월) → 자바 11(2018년 9월) → 자바 17(2021년 9월)
@@ -14,7 +15,7 @@ render_with_liquid: false
 
 <br>
 
-### 자연어에 가까운 코드 구현
+### ☑️자연어에 가까운 코드 구현
 자바 8을 이용함으로써 자연어에 더 가깝게 간단한 방식으로 코드를 구현할 수 있게 되었다.
 
 ```java
@@ -30,7 +31,7 @@ Collections.sort(inventory, new Comparator<Apple>()){
 inventory.sort(comparing(Apple::getWeight));
 ```
 
-### 간결한 코드, 멀티코어 프로세서의 쉬운 활용
+### ☑️간결한 코드, 멀티코어 프로세서의 쉬운 활용
 
 멀티코어 CPU가 대중화 되었지만, 자바 8이 등장하기 이전 자바 프로그램은 여러 코어 중 하나만을 사용했다.
 이전까지도 병렬 실행을 위해 여러 도구 및 모델을 도입했지만, 자바 8부터 **병렬 실행을 새롭고 단순한 방식으로 접근할 수 있는 방법이 등장하게 되었다.**
@@ -44,7 +45,7 @@ inventory.sort(comparing(Apple::getWeight));
 > - 인터페이스의 디폴트 메서드
 
 
-[//]: # (![img.png]&#40;morden_java/Unix commands related to the stream.png&#41;)
+![img.png](morden_java/Unix commands related to the stream.png)
 
 
 <br>
@@ -53,12 +54,9 @@ inventory.sort(comparing(Apple::getWeight));
 
 # 1.2 왜 아직도 자바는 변화하는가?
 
-> 자바가 멀티 코어 병렬성 (기본의 자바에서 부족했던 특성)을 더 쉽게 이용할 수 있도록 진화하는 과정과 관련 개념을 설명한다.
-
 [//]: # (## 1.2.1 프로그래밍 언어 생태계에서 자바의 위치)
 
 
-<br>
 
 
 ## 1.2.2 스트림 처리
@@ -72,7 +70,7 @@ inventory.sort(comparing(Apple::getWeight));
 
 유닉스의 `cat` 명령은 두 파일을 연결해서 스트림을 생성하며, `tr`은 스트림의 문자를 번역하고, `sort`는 스트림의 행을 정력하며, `tail-3`은 스트림의 마지막 3개 행을 제공한다.
 
-다음 예제처럼 유닉스 명령행에서는 파이프(|)를 이용해서 명령을 연결할 수 있다.
+다음 예제처럼 유닉스 명령행에서는 파이프 (`|`) 를 이용해서 명령을 연결할 수 있다.
 
 ```shell
 cat faile1 file2 | tr "[A-Z]" "[a-z]" | sort | tail -3
@@ -155,6 +153,7 @@ cat faile1 file2 | tr "[A-Z]" "[a-z]" | sort | tail -3
 
 먼저 함수를 값처럼 취급한다고 했는데, 이 특징이 어떤 장점을 제공하는지 살펴보자.
 
+
 ### 프로그래밍 언어의 핵심은 값을 바꾸는 것이다.
 
 전통적으로 프로그래밍 언어에서는 값을 바꿀 수 있는 값을 **일급(first-class)값**, 또는 **시민(citizen)** 이라 부른다.
@@ -206,7 +205,9 @@ File[] hiddenFiles = new File(".").listFilles(File::isHidden);
 
 람다 문법 형식으로 구현된 프로그램을 함수형 프로그래밍, 즉 '함수를 일급값으로 넘겨주는 프로그램을 구현한다.'라고 한다.
 
-[//]: # (![img.png]&#40;morden_java/compare old and new.png&#41;)
+![img.png](morden_java/compare old and new.png)
+
+<br>
 
 ## 1.3.2 코드 넘겨주기 : 예제
 
@@ -254,6 +255,7 @@ filterApples(inventory, Apple::isHeavyApple);
 > 앞에서 다룬 예제에서는 Apple::isGreenApple 메서드를 filterApples로 넘겨주었다.(filterApples는 (Predicate<Apple>를 파라미터로 받음))
 > 수학에서는 인수로 값을 받아 true나 false를 반환하는 함수를 프레디케이트라고 한다.
 
+<br>
 
 ## 1.3.3 메서드 전달에서 람다로
 
@@ -275,17 +277,76 @@ filterApples(inventory, (Apple a)->GREEN.equals(a.getColor())||RED.equals(a.getC
 
 대신, **`filter`와 비슷한 동작을 수행하는 연산 집합을 포함하는 새로운 `스트림 API`를 제공한다.**
 
+<br>
+---
 
-[//]: # (# 스트림)
+# 1.4 스트림
+
+```java
+/**컬렉션 API**/
+  Map<Currency, List<Transaction>> transcationByCurrencies = new HashMap<>(); //그룹화된 트랜잭션을 더할 Map 생성
+  for(Transaction transaction : transactions){ //트랜잭션의 리스트를 반복
+    if(transaction.getPrice()>1000){ //고가의 트랜잭션을 필터링
+        //트랜잭션 통화 추출 코드 (get)
+        //현재 통화의 그룹화된 맵에 항목이 없으면 새로 만든다. (null이면 new, put)
+    }
+    transactionForCurrency.add(transaction); //현재 탐색된 트랜잭션을 같은 통화의 트랜잭션 리스트에 추가한다.
+  }
+```
+
+```java
+/**스트림 API**/
+  import static java.util.stream.Collectors.groupingBy;
+  Map<Currency, List<Transaction>> transcationByCurrencies = 
+    transactions.stream()
+            .filter((Transaction t)-> t.getPrice()>1000) //고가의 트랜잭션 필터링
+            .collect(grouping By(Transaction::getCurrency)); //통화로 그룹화 합
+
+```
+
+`스트림 API`를 이용하면 `컬렉션 API`와는 상당히 다른 방식으로 데이터를 처리할 수 있다.
+
+컬렉션에서는 **반복 과정을 직접 처리**(for-each) 하는데, 이런 방식의 반복을 **외부 반복**이라 한다.
+
+반면 스트림의 경우에는 **라이브러리 내부에서 모든 데이터가 처리**된다. 이런 방식을 **내부 반복**이라 한다.
+
+컬렉션은 단일 CPU에서 반복문을 돌려 데이터를 처리하지만, 스트림은 데이터를 병렬적으로 처리할 수 있기 때문에 사용하는 코어의 갯수배만큼 작업 속도가 빨라진다.
+
+<br>
+
+## 1.4.1 멀티스레딩은 어렵다
+
+이전 자바 버전에서 제공하는 스레드 API로 멀티스레딩 코드를 구현해서 병렬성을 갖도록 하는 것은 쉽지 않았다. (동기화 문제)
+
+자바 8은 스트림 API로 컬렉션을 처리하면서 발생하는 _모호함과 반복적인 코드 문제_, 그리고 _멀티 코어 활용 어려움_ 이라는 두가지 문제를 모두 해결했다.
+
+`컬렉션`은 어떻게 데이터를 저장하고 접근할지에 중점을 두는 반면, **`스트림`은 데이터에 어떤 계산을 할 것인지 묘사하는 것에 중점을 둔다.**
+스트림은 스트림 내의 요소를 쉽게 병렬로 처리할 수 있는 환경을 제공한다는 것이 핵심이다.
+
+심지어 컬렉션을 필터링할 수 있는 가장 빠른 방법은 컬렉션을 스트림으로 바꾸고, 병렬로 처리한 다음에,
+리스트를 다시 복원하는 것이기도 하다.
+
+```java
+/**순차 처리**/
+import static java.util.stream.Collectors.toList; 
+List<Apple> heavyApples = 
+    inventory.stream().filter((Apple a) -> a.getWeight() > 150) 
+                      .collect(toList()); 
+```
+```java
+/**병렬 처리**/
+import static java.util.stream.Collectors.toList; 
+List<Apple> heavyApples =
+  inventory.parallelStream().filter((Apple a) -> a.getWeight() > 150)
+                            .collect(toList());
+```
+
+<br>
+
+---
 
 [//]: # ()
-[//]: # (> 스트림 API&#40;병렬형 데이터를 표현하고 이들 데이터를 병렬로 처리할 수 있음을 유연하게 보여주는&#41;가 어째서 강력하고 새로운 프로그래밍 도구인지 설명한다.)
-
-[//]: # ()
-[//]: # (# 디폴트 메서드와 자바 모듈)
-
-[//]: # ()
-[//]: # (> 디폴트 메서드라는 새로운 자바 8의 기능을 인터페이스, 라이브러리의 간결성 유지 및 재컴파일을 줄이는 데 어떻게 활용할 수 있는지 설명한다.)
+[//]: # (# 1.5 디폴트 메서드와 자바 모듈)
 
 [//]: # ()
 [//]: # (# 함수형 프로그래밍에서 가져온 다른 유용한 아이디어)
