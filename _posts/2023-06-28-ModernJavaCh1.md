@@ -1,6 +1,6 @@
 ---
 title: 자바 8,9,10,11 : 무슨 일이 일어나고 있는가?
-date: 2023-06-28 08:49:00 +0900
+date: 2023-06-28 12:28:00 +0900
 categories: [Java, Modern Java in Action]
 tags: [Java]
 render_with_liquid: false
@@ -44,7 +44,7 @@ inventory.sort(comparing(Apple::getWeight));
 > - 인터페이스의 디폴트 메서드
 
 
-![img.png](../assets/img/morden_java/Unix commands related to the stream.png)
+![img.png](morden_java/Unix commands related to the stream.png)
 
 
 <br>
@@ -97,7 +97,7 @@ cat faile1 file2 | tr "[A-Z]" "[a-z]" | sort | tail -3
 이러한 기능을 이론적으로 `동작 파라미터화`라고 부른다.
 스트림 API는 연산의 동작을 파라미터화할 수 있는 코드를 전달한다는 사상에 기초하기 때문이다.
 
-![img.png](../assets/img/morden_java/method as parameter of sort.png)
+![img.png](morden_java/method as parameter of sort.png)
 
 
 
@@ -162,8 +162,8 @@ cat faile1 file2 | tr "[A-Z]" "[a-z]" | sort | tail -3
 자바 프로그래밍에서 일급 값은 42(int형), 3.14(double형) 등의 `기본 값`과 `객체`가 일급 값으로 칭해질 수 있다.
 
 > new 또는 팩토리 메서드 또는 라이브러리 함수를 이용해서 객체의 값을 얻을 수 있고, 객체 참조는 클래스의 인스턴스를 가리킨다.
-> 
-> 예를 들어 "abc"(String형), new Integer(1111) (Integer형), new HashMap<Integer, String>(100) (HashMap의 생성자를 호출) 등으로 객체 참조를 얻을 수 있다. 
+>
+> 예를 들어 "abc"(String형), new Integer(1111) (Integer형), new HashMap<Integer, String>(100) (HashMap의 생성자를 호출) 등으로 객체 참조를 얻을 수 있다.
 
 자유롭게 전달할 수 없는 구조체는 **이급 시민**이다. `메서드`, `클래스` 등이 이급 자바 시민에 해당한다.
 
@@ -206,13 +206,13 @@ File[] hiddenFiles = new File(".").listFilles(File::isHidden);
 
 람다 문법 형식으로 구현된 프로그램을 함수형 프로그래밍, 즉 '함수를 일급값으로 넘겨주는 프로그램을 구현한다.'라고 한다.
 
-![img.png](../assets/img/morden_java/compare old and new.png)
+![img.png](morden_java/compare old and new.png)
 
 ## 1.3.2 코드 넘겨주기 : 예제
 
 특정 항목을 선택해서 반환하는 동작을 필터라고 한다. 자바 8 이전에는 `필터링`을 하기 위해 메서드를 하나하나 구현해야 했다.
 
-여러가지 조건을 주고 싶다면 동일한 틀의 메서드를 복사 붙여넣기 해서, 
+여러가지 조건을 주고 싶다면 동일한 틀의 메서드를 복사 붙여넣기 해서,
 `GREEN.equals(apple.getColor())` 또는 `apple.getWeight()>150` 처럼 조건식만 변경해야 했을 것이다.
 
 그러나 자바 8에서는 코드를 인수로 넘겨줄 수 있으므로 `filter` 메서드를 중복으로 구현할 필요가 없어졌다.
@@ -270,7 +270,7 @@ filterApples(inventory, (Apple a)->GREEN.equals(a.getColor())||RED.equals(a.getC
 한 번만 사용할 메서드는 따로 정의 및 구현할 필요 없이 사용 가능하게 된 것이다.
 
 사실 라이브러리 메서드 `filter`를 사용하면 `filtertApples` 메서드의 구현 없이 `filter(inventory, (Apple a)->a.getWeight()>150);`
-와 같은 작성이 가능하지만, 
+와 같은 작성이 가능하지만,
 자바 8에서는 **병렬성**이라는 중요성 때문에 이와 같은 설계를 포기했다.
 
 대신, **`filter`와 비슷한 동작을 수행하는 연산 집합을 포함하는 새로운 `스트림 API`를 제공한다.**
